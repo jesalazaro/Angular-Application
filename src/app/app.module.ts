@@ -11,8 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
-import {MatToolbarModule} from '@angular/material/toolbar';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchCarComponent } from './search-car/search-car.component';
@@ -39,6 +39,7 @@ import { DetailsCarComponent } from './details-car/details-car.component';
     MatSelectModule,
     MatRadioModule,
     MatCardModule,
+    MatCheckboxModule,
     ReactiveFormsModule,
     MatToolbarModule,
   ],

@@ -1,23 +1,50 @@
-<div class="form-container">
-  <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
-    <label for="registrationNr">Registration Number:</label>
-    <input type="text" id="registrationNr" formControlName="registrationNr" />
+<div class="mat-app-background">
+  <div class="form-container">
+    <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <label for="registrationNr">Registration Number:</label>
+        <input
+          matInput
+          type="text"
+          id="registrationNr"
+          formControlName="registrationNr"
+        />
+      </mat-form-field>
 
-    <label for="brand">Brand:</label>
-    <input type="text" id="brand" formControlName="brand" />
+      <mat-form-field>
+        <label for="brand">Brand:</label>
+        <input matInput type="text" id="brand" formControlName="brand" />
+      </mat-form-field>
 
-    <label for="model">Model:</label>
-    <input type="text" id="model" formControlName="model" />
+      <mat-form-field>
+        <label for="model">Model:</label>
+        <input matInput type="text" id="model" formControlName="model" />
+      </mat-form-field>
 
-    <label for="isAvailable">Available:</label>
-    <input type="checkbox" id="isAvailable" formControlName="isAvailable" />
+      <mat-checkbox formControlName="isAvailable">Available</mat-checkbox>
 
-    <label for="type">Type:</label>
-    <input type="text" id="type" formControlName="type" />
+      <mat-form-field>
+        <label for="type">Type:</label>
+        <mat-select formControlName="type" id="type">
+          <mat-option value="low">Low</mat-option>
+          <mat-option value="medium">Medium</mat-option>
+          <mat-option value="van">Van</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <label for="kmTraveled">Kilometers Traveled:</label>
-    <input type="number" id="kmTraveled" formControlName="kmTraveled" />
+      <mat-form-field>
+        <label for="kmTraveled">Kilometers Traveled:</label>
+        <input
+          matInput
+          type="number"
+          id="kmTraveled"
+          formControlName="kmTraveled"
+        />
+      </mat-form-field>
 
-    <button type="submit" [disabled]="!carForm.valid">Submit</button>
-  </form>
+      <button mat-raised-button type="submit" [disabled]="!carForm.valid">
+        Submit
+      </button>
+    </form>
+  </div>
 </div>
