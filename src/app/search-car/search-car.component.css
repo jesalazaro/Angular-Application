@@ -4,7 +4,7 @@
     max-width: 800px;
     margin: 20px auto;
   }
-  
+  [ng-click],
   .result-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columns with equal width */

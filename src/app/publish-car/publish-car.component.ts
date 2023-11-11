@@ -22,13 +22,14 @@ export class PublishCarComponent implements OnInit {
       registrationNr: ['', Validators.required],
       brand: ['', Validators.required],
       model: ['', Validators.required],
-      isAvailable: [true, Validators.required],
+      isAvailable: true,
       type: ['', Validators.required],
       kmTraveled: [null, Validators.required]
     });
   }
 
   onSubmit() {
+ 
     if (this.carForm.valid) {
       // Log or send the form data to a service
       console.log(this.carForm.value);
@@ -42,6 +43,7 @@ export class PublishCarComponent implements OnInit {
 
 
   createCar() {
+
     this.driveEaseService.postData(this.carForm.getRawValue())
       .then(response => {
         // Handle the response here
