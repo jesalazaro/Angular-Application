@@ -13,13 +13,16 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchCarComponent } from './search-car/search-car.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PublishCarComponent } from './publish-car/publish-car.component';
 import { DetailsCarComponent } from './details-car/details-car.component';
-
+import { SearchHotelComponent } from './search-hotel/search-hotel.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { DetailsCarComponent } from './details-car/details-car.component';
     SearchCarComponent,
     NavbarComponent,
     PublishCarComponent,
-    DetailsCarComponent
+    DetailsCarComponent,
+    SearchHotelComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,9 @@ import { DetailsCarComponent } from './details-car/details-car.component';
     MatCheckboxModule,
     ReactiveFormsModule,
     MatToolbarModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

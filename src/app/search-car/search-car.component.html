@@ -1,13 +1,38 @@
 <div class="result-container clickable-div">
-  <h2>Autos disponibles para rentar</h2>
-  <div class="result-grid " >
-    @for (item of cars; track $index) {
+  <h2>Autos disponibles para rentar {{selectedOption}}</h2>
+
+
+  <mat-form-field>
+    <mat-label >Type:</mat-label>
+    <mat-select #model [value]="selectedOption" >
+      <mat-option value = "Todos">Todos</mat-option>
+      <mat-option value="370z">370z</mat-option>
+      <mat-option value="gamma media">Gamma media</mat-option>
+      <mat-option value="van">Van</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label >Type:</mat-label>
+    <mat-select #gamma [value]="selectedOption">
+      <mat-option value = "Todos">Todos</mat-option>
+      <mat-option value="gamma baja">Gamma baja</mat-option>
+      <mat-option value="gamma media">Gamma media</mat-option>
+      <mat-option value="van">Van</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <button mat-raised-button (click)="filterResults(gamma.value, model.value)" >Buscar </button>
+
+  <div class="result-grid">
+    @for (item of filteredCars; track $index) {
     <div class="result-item" (click)="redirectToDetails(item.id)">
-      <img src="assets/car.jpg" alt="Result Image"  />
+      <img src="assets/car.jpg" alt="Result Image" />
       <div class="result-content">
         {{ item.brand }}
         <p>{{ item.model }}</p>
-        {{$index}}
+        {{ $index }}
       </div>
     </div>
     } @empty { There were no items in the list. }

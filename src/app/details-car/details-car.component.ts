@@ -34,7 +34,7 @@ export class DetailsCarComponent implements OnInit {
     this.driveEaseService.getCar(this.carId)
       .then(response => {
         this.car = response.data;
-        console.log(response.data)
+
       }).catch(error => {
 
         console.log(error);
