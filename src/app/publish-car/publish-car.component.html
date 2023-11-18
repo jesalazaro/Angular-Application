@@ -2,7 +2,7 @@
   <div class="form-container">
     <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
       <mat-form-field>
-        <mat-label for="registrationNr">Registration Number:</mat-label>
+        <mat-label for="registrationNr">Placa</mat-label>
         <input
           matInput
           type="text"
@@ -12,19 +12,19 @@
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label for="brand">Brand:</mat-label>
+        <mat-label for="brand">Marca</mat-label>
         <input matInput type="text" id="brand" formControlName="brand" />
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label for="model">Model:</mat-label>
+        <mat-label for="model">Modelo</mat-label>
         <input matInput type="text" id="model" formControlName="model" />
       </mat-form-field>
 
       <!-- <mat-checkbox formControlName="isAvailable">Available</mat-checkbox> -->
 
       <mat-form-field>
-        <mat-label for="type">Type:</mat-label>
+        <mat-label for="type">Tipo:</mat-label>
         <mat-select formControlName="type" id="type">
           <mat-option value="gamma baja">Gamma baja</mat-option>
           <mat-option value="gamma media">Gamma media</mat-option>
@@ -33,7 +33,7 @@
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label for="kmTraveled">Kilometers Traveled:</mat-label>
+        <mat-label for="kmTraveled">Kilometraje:</mat-label>
         <input
           matInput
           type="number"

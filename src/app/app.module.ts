@@ -26,6 +26,8 @@ import { FormsModule } from '@angular/forms';
 import { PublishedCarsComponent } from './published-cars/published-cars.component';
 import { DetailsCarEditComponent } from './details-car-delete/details-car-edit.component';
 import { ReservatedCarsComponent } from './reservated-cars/reservated-cars.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { ReservatedCarsComponent } from './reservated-cars/reservated-cars.compo
     PublishedCarsComponent,
     DetailsCarEditComponent,
     ReservatedCarsComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

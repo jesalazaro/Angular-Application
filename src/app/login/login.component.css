@@ -1,0 +1,17 @@
+.login-container {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mat-card {
+    max-width: 300px; /* Adjust the width as needed */
+    width: 100%;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-top: 10px;
+  }
+  

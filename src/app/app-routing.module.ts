@@ -7,6 +7,8 @@ import { SearchHotelComponent } from './search-hotel/search-hotel.component';
 import { PublishedCarsComponent } from './published-cars/published-cars.component';
 import { DetailsCarEditComponent } from './details-car-delete/details-car-edit.component';
 import { ReservatedCarsComponent } from './reservated-cars/reservated-cars.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path: 'search-car', component: SearchCarComponent },
@@ -15,7 +17,9 @@ const routes: Routes = [
   {path: 'published-cars', component: PublishedCarsComponent},
   {path: 'search-hotel', component: SearchHotelComponent},
   {path: 'details-car-edit/:id', component: DetailsCarEditComponent},
-  {path: 'reservated-cars', component: ReservatedCarsComponent}
+  {path: 'reservated-cars', component: ReservatedCarsComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
 ];
 
 @NgModule({
