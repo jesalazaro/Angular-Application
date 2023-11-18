@@ -1,0 +1,63 @@
+<div class="car-results">
+  @if (car.model != undefined ){
+  <div class="car-card">
+    <img src="assets/car.jpg" />
+    <h2>{{ car.model }}</h2>
+    <p>Price: {{ car.model }}</p>
+    <p>Year: {{ car.brand }}</p>
+  </div>
+  }
+</div>
+
+<div class="mat-app-background">
+  <div class="form-container">
+    <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label for="registrationNr">Registration Number:</mat-label>
+        <input
+          matInput
+          type="text"
+          id="registrationNr"
+          formControlName="registrationNr"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="brand">Brand:</mat-label>
+        <input matInput type="text" id="brand" formControlName="brand" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="model">Model:</mat-label>
+        <input matInput type="text" id="model" formControlName="model" />
+      </mat-form-field>
+
+      <!-- <mat-checkbox formControlName="isAvailable">Available</mat-checkbox> -->
+
+      <mat-form-field>
+        <mat-label for="type">Type:</mat-label>
+        <mat-select formControlName="type" id="type">
+          <mat-option value="gamma baja">gamma baja</mat-option>
+          <mat-option value="gamma media">gamma media</mat-option>
+          <mat-option value="van">van</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label for="kmTraveled">Kilometers Traveled:</mat-label>
+        <input
+          matInput
+          type="number"
+          id="kmTraveled"
+          formControlName="kmTraveled"
+        />
+      </mat-form-field>
+
+      <button mat-raised-button type="submit" [disabled]="!carForm.valid">
+        Editar
+      </button>
+    </form>
+    
+    <button mat-raised-button (click)="deleteCar()">Eliminar</button>
+  </div>
+</div>

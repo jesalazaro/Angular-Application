@@ -44,7 +44,7 @@ export class PublishCarComponent implements OnInit {
 
   createCar() {
 
-    this.driveEaseService.postData(this.carForm.getRawValue())
+    this.driveEaseService.postCar(this.carForm.getRawValue())
       .then(response => {
         // Handle the response here
         alert("Auto Publicado")

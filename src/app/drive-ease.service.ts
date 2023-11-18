@@ -20,26 +20,48 @@ export class DriveEaseService {
     });
   }
 
-  async postData(data: FormGroup) {
 
-    const apiUrl = 'http://localhost:8080/module/cars';
-    try {
-      const response = await axios.post(apiUrl, data);
-      console.log('Response:', response.data);
-      return response.data;
-    } catch (error) {
-      console.error('Error:', error);
-      throw error;
-    }
-  }
-
-  getCar(id: number){
-    return axios.get(`http://localhost:8080/module/cars/${id}`,{ 
+  getCar(id: number) {
+    return axios.get(`http://localhost:8080/module/cars/${id}`, {
       headers: {
         'Content-Type': 'application/json'
       }
     });
   }
+
+
+
+  async postCar(data: FormGroup) {
+    const apiUrl = 'http://localhost:8080/module/cars';
+    try {
+      const response = await axios.post(apiUrl, data);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async deleteCar(id: number) {
+    const apiUrl = `http://localhost:8080/module/cars/${id}`;
+    try {
+      const response = await axios.delete(apiUrl);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async updateCar(data: FormGroup, id: number) {
+    const apiUrl = `http://localhost:8080/module/cars/${id}`;
+    try {
+      const response = await axios.put(apiUrl, data);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+
 }
 
 

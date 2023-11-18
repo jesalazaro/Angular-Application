@@ -23,6 +23,8 @@ import { PublishCarComponent } from './publish-car/publish-car.component';
 import { DetailsCarComponent } from './details-car/details-car.component';
 import { SearchHotelComponent } from './search-hotel/search-hotel.component';
 import { FormsModule } from '@angular/forms';
+import { PublishedCarsComponent } from './published-cars/published-cars.component';
+import { DetailsCarEditComponent } from './details-car-delete/details-car-edit.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     PublishCarComponent,
     DetailsCarComponent,
-    SearchHotelComponent
+    SearchHotelComponent,
+    PublishedCarsComponent,
+    DetailsCarEditComponent,
   ],
   imports: [
     BrowserModule,

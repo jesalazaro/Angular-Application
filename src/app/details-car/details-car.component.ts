@@ -16,33 +16,20 @@ export class DetailsCarComponent implements OnInit {
   constructor(private driveEaseService: DriveEaseService, private route: ActivatedRoute) { }
 
   carId!: number;
+  car!: CarDetails;
 
   ngOnInit(): void {
-
     this.getCar();
   }
 
-
-
-
-  car!: CarDetails ;
-
   getCar() {
-
     this.carId = this.route.snapshot.params['id'];
-
     this.driveEaseService.getCar(this.carId)
       .then(response => {
         this.car = response.data;
-
       }).catch(error => {
-
         console.log(error);
-
       });
-
   }
-
-
-
+  
 }

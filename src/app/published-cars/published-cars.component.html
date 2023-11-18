@@ -1,0 +1,19 @@
+<div class="result-container clickable-div">
+    <h2> Mis autos </h2>
+  
+  
+  
+    <div class="result-grid">
+      @for (item of filteredCars; track $index) {
+      <div class="result-item" (click)="redirectToDetails(item.id)">
+        <img src="assets/car.jpg" alt="Result Image" />
+        <div class="result-content">
+          {{ item.brand }}
+          <p>{{ item.model }}</p>
+          {{ $index }}
+        </div>
+      </div>
+      } @empty { There were no items in the list. }
+    </div>
+  </div>
+  
