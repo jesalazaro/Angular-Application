@@ -25,6 +25,7 @@ import { SearchHotelComponent } from './search-hotel/search-hotel.component';
 import { FormsModule } from '@angular/forms';
 import { PublishedCarsComponent } from './published-cars/published-cars.component';
 import { DetailsCarEditComponent } from './details-car-delete/details-car-edit.component';
+import { ReservatedCarsComponent } from './reservated-cars/reservated-cars.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { DetailsCarEditComponent } from './details-car-delete/details-car-edit.c
     SearchHotelComponent,
     PublishedCarsComponent,
     DetailsCarEditComponent,
+    ReservatedCarsComponent,
   ],
   imports: [
     BrowserModule,
