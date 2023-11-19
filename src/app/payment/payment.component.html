@@ -1,0 +1,20 @@
+<div class="mat-app-background">
+  <div class="form-container">
+    <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+        
+      Valor total : {{ valor_total }}
+
+      <mat-form-field>
+        <mat-label for="medioPago">Medio de pago:</mat-label>
+        <mat-select formControlName="medio_pago" id="medioPago">
+          <mat-option  value="1">Tarjeta de credito</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button type="submit" [disabled]="!paymentForm.valid">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+

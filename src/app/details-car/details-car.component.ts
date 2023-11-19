@@ -13,7 +13,7 @@ import { CarDetails } from '../Interfaces/car-details';
 export class DetailsCarComponent implements OnInit {
 
 
-  constructor(private driveEaseService: DriveEaseService, private route: ActivatedRoute) { }
+  constructor(private driveEaseService: DriveEaseService, private route: ActivatedRoute, private router: Router) { }
 
   carId!: number;
   car!: CarDetails;
@@ -30,6 +30,10 @@ export class DetailsCarComponent implements OnInit {
       }).catch(error => {
         console.log(error);
       });
+  }
+
+  redirectToPayment(productId: number) {
+    this.router.navigate(['/payment']);
   }
   
 }

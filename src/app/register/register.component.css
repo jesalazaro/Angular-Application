@@ -1,8 +1,10 @@
-.register-container {
-    height: 50vh;
+.login-container {
+    height: 140vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 30%;
+    margin-right: 30%;
   }
   
   .mat-card {

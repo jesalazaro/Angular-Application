@@ -9,6 +9,7 @@ import { DetailsCarEditComponent } from './details-car-delete/details-car-edit.c
 import { ReservatedCarsComponent } from './reservated-cars/reservated-cars.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {path: 'search-car', component: SearchCarComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'reservated-cars', component: ReservatedCarsComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'payment', component: PaymentComponent},
 ];
 
 @NgModule({

@@ -1,31 +1,170 @@
-<div class="register-container" fxLayout="column" fxLayoutAlign="center center">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title>Registro</mat-card-title>
-      </mat-card-header>
-  
-      <mat-card-content>
-        <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Usuario" name="username" [(ngModel)]="username" required>
-          </mat-form-field>
-  
-          <mat-form-field class="full-width">
-            <input matInput type="password" placeholder="Contraseña" name="password" [(ngModel)]="password" required>
-          </mat-form-field>
-  
-          <mat-form-field class="full-width">
-            <input matInput type="password" placeholder="Confirmar Contraseña" name="confirmPassword" [(ngModel)]="confirmPassword" required>
-          </mat-form-field>
+<div class="login-container" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Registrarse</mat-card-title>
+    </mat-card-header>
 
-            
-          <mat-form-field class="full-width">
-            <input matInput type="number" placeholder="Número de tarjeta de crédito" name="creditCard" [(ngModel)]="creditCard" required>
-          </mat-form-field>
-  
-          <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">Register</button>
-        </form>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+        <!-- Registration Form Fields -->
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Nombre de usuario"
+            name="nom_usuario"
+            [(ngModel)]="nom_usuario"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            type="password"
+            placeholder="Confirmar contraseña"
+            name="password"
+            [(ngModel)]="password"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            type="password"
+            placeholder="Confirmar contraseña"
+            name="confirmPassword"
+            [(ngModel)]="confirmPassword"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Telefono"
+            name="telefono_usuario"
+            [(ngModel)]="telefono_usuario"
+            required
+          />
+        </mat-form-field>
+
+        
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            type="email"
+            placeholder="email"
+            name="email"
+            [(ngModel)]="email"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Fecha de nacimiento"
+            name="fecha_nacimiento"
+            [(ngModel)]="fecha_nacimiento"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Numero Cuenta"
+            name="numero_cuenta"
+            [(ngModel)]="numero_cuenta"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Nombre Titular Cuenta"
+            name="nombre_titular_cuenta"
+            [(ngModel)]="nombre_titular_cuenta"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Identificacion Titular Cuenta"
+            name="identificacion_titular_cuenta"
+            [(ngModel)]="identificacion_titular_cuenta"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Numero Tarjeta"
+            name="numero_tarjeta"
+            [(ngModel)]="numero_tarjeta"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Nombre Titular Tarjeta"
+            name="nombre_titular_tarjeta"
+            [(ngModel)]="nombre_titular_tarjeta"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Identificación Titular Tarjeta"
+            name="titular_tarjeta"
+            [(ngModel)]="identificacion_titular_tarjeta"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Fecha Vencimiento"
+            name="fecha_vencimiento"
+            [(ngModel)]="fecha_vencimiento"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input
+            matInput
+            placeholder="Codigo"
+            name="codigo"
+            [(ngModel)]="codigo"
+            required
+          />
+        </mat-form-field>
+
+        <!-- Submit Button -->
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!registerForm.valid"
+        >
+          Register
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+
+</div>
+
+

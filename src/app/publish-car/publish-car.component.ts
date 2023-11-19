@@ -32,8 +32,6 @@ export class PublishCarComponent implements OnInit {
  
     if (this.carForm.valid) {
       // Log or send the form data to a service
-      console.log(this.carForm.value);
-
       this.createCar()
     } else {
       // Handle invalid form
@@ -51,6 +49,6 @@ export class PublishCarComponent implements OnInit {
       })
       .catch(error => {
         // Handle errors here
-      });
+    });
   }
 }
