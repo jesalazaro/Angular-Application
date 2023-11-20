@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import axios, { AxiosError, AxiosResponse } from 'axios';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class GeneralAccessService {
+
+
+  private userIdSource = new BehaviorSubject<string>('') ;
+  private moduleIdSource = new BehaviorSubject<string>('');
+
+  currentUserId = this.userIdSource.asObservable();
+
+  currentModule = this.moduleIdSource.asObservable();
 
   constructor() { }
 
@@ -51,5 +59,13 @@ export class GeneralAccessService {
     }
   }
 
-  
+  changeUserId(userId: string) {
+    this.userIdSource.next(userId);
+  }
+
+  changeModule(currentModule: string) {
+    this.moduleIdSource.next(currentModule);
+  }
+
+
 }

@@ -10,6 +10,8 @@ import { ReservatedCarsComponent } from './reservated-cars/reservated-cars.compo
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PaymentComponent } from './payment/payment.component';
+import { GeneralPageComponent } from './general-page/general-page.component';
+import { StartPageComponent } from './start-page/start-page.component';
 
 const routes: Routes = [
   {path: 'search-car', component: SearchCarComponent },
@@ -22,6 +24,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'payment', component: PaymentComponent},
+  {path: 'general', component: GeneralPageComponent},
+  {path: '', component: StartPageComponent},
 ];
 
 @NgModule({

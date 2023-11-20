@@ -1,0 +1,12 @@
+
+  .menu-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .menu-card {
+    width: 600px;
+    cursor: pointer;
+  }

@@ -29,6 +29,8 @@ import { ReservatedCarsComponent } from './reservated-cars/reservated-cars.compo
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PaymentComponent } from './payment/payment.component';
+import { GeneralPageComponent } from './general-page/general-page.component';
+import { StartPageComponent } from './start-page/start-page.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { PaymentComponent } from './payment/payment.component';
     LoginComponent,
     RegisterComponent,
     PaymentComponent,
+    GeneralPageComponent,
+    StartPageComponent,
   ],
   imports: [
     BrowserModule,

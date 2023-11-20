@@ -58,7 +58,7 @@ export class SearchCarComponent implements OnInit {
         car => car?.type.toLowerCase().includes(gamma.toLowerCase()) && car?.model.toLowerCase().includes(model.toLowerCase())
       );
     }
-    else{
+    else {
       this.filteredCars = this.cars;
     }
 

@@ -1,14 +1,29 @@
-<!-- navbar.component.html -->
-
 <mat-toolbar color="primary">
-    <span></span>
+  <mat-toolbar-row>
+    @if (userId == '' && currentModule == '') {
+    <button mat-button routerLink="/">Inicio</button>
+    <button mat-button routerLink="/login">Ingresar</button>
+    <button mat-button routerLink="/register">Registrarse</button>
+    } @else if(userId != '' && currentModule == 'carModule') {
+
     <button mat-button routerLink="/search-car">Rentar Auto</button>
     <button mat-button routerLink="/publish-car">Publicar Auto</button>
-    <button mat-button routerLink="/published-cars">Mis autos publicados</button>    
-    <button mat-button routerLink="/reservated-cars">Mis autos reservados</button>    
-    <button mat-button routerLink="/login">Ingresar</button>    
-    <button mat-button routerLink="/register">Registrarse</button>    
-    <!-- <button mat-button routerLink="/search-hotel">Buscar Hotel</button> -->
-    <!-- Add more buttons as needed -->
-  </mat-toolbar>
-  
+    <button mat-button routerLink="/published-cars">
+      Mis autos publicados
+    </button>
+    <button mat-button routerLink="/reservated-cars">
+      Mis autos reservados
+    </button>
+    <span class="flexExpand"></span>
+    <button mat-button (click)="redirectToGeneral()">Menu General</button>
+    <button mat-button (click)="closeSession()">Cerrar sesión</button>
+
+    } @else if(userId != '' && currentModule == ''){
+
+    <span class="flexExpand"></span>
+    <button mat-button routerLink="/general">Menu General</button>
+    <button mat-button (click)="closeSession()">Cerrar sesión</button>
+
+    }
+  </mat-toolbar-row>
+</mat-toolbar>
