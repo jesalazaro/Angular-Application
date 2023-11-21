@@ -22,7 +22,7 @@ export class LoginComponent {
     telefono_usuario: "",
   };
 
-  constructor(private generalAccess: GeneralAccessService, private router: Router) { }
+  constructor(private generalAccessService: GeneralAccessService, private router: Router) { }
 
   onSubmit() {
     // Add your authentication logic here
@@ -31,7 +31,7 @@ export class LoginComponent {
   }
 
   getUser() {
-    this.generalAccess.getUser(this.email, this.password).then(response => {
+    this.generalAccessService.getUser(this.email, this.password).then(response => {
       this.userData = response.data;
       this.sendUserId(response.data.id_usuario);
     }).catch(error => {
@@ -40,7 +40,7 @@ export class LoginComponent {
   }
 
   sendUserId(idUsuario: string) {
-    this.generalAccess.changeUserId(idUsuario);
+    this.generalAccessService.changeUserId(idUsuario);
     this.router.navigate(['/general']);
   }
 

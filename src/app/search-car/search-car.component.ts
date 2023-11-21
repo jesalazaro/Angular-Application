@@ -45,17 +45,17 @@ export class SearchCarComponent implements OnInit {
 
     if (gamma != 'Todos' && model == 'Todos') {
       this.filteredCars = this.cars.filter(
-        car => car?.type.toLowerCase().includes(gamma.toLowerCase())
+        car => car?.tipo_vehiculo.toLowerCase().includes(gamma.toLowerCase())
       );
     }
     else if (gamma == 'Todos' && model != 'Todos') {
       this.filteredCars = this.cars.filter(
-        car => car?.model.toLowerCase().includes(model.toLowerCase())
+        car => car?.modelo.toLowerCase().includes(model.toLowerCase())
       );
     }
     else if (gamma != 'Todos' && model != 'Todos') {
       this.filteredCars = this.cars.filter(
-        car => car?.type.toLowerCase().includes(gamma.toLowerCase()) && car?.model.toLowerCase().includes(model.toLowerCase())
+        car => car?.tipo_vehiculo.toLowerCase().includes(gamma.toLowerCase()) && car?.modelo.toLowerCase().includes(model.toLowerCase())
       );
     }
     else {

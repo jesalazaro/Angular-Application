@@ -31,6 +31,7 @@ import { RegisterComponent } from './register/register.component';
 import { PaymentComponent } from './payment/payment.component';
 import { GeneralPageComponent } from './general-page/general-page.component';
 import { StartPageComponent } from './start-page/start-page.component';
+import { DetailsHotelComponent } from './details-hotel/details-hotel.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { StartPageComponent } from './start-page/start-page.component';
     PaymentComponent,
     GeneralPageComponent,
     StartPageComponent,
+    DetailsHotelComponent,
   ],
   imports: [
     BrowserModule,

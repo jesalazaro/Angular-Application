@@ -19,12 +19,12 @@ export class PublishCarComponent implements OnInit {
 
   initializeForm() {
     this.carForm = this.formBuilder.group({
-      registrationNr: ['', Validators.required],
-      brand: ['', Validators.required],
-      model: ['', Validators.required],
-      isAvailable: true,
-      type: ['', Validators.required],
-      kmTraveled: [null, Validators.required]
+      numero_placa: ['', Validators.required],
+      marca: ['', Validators.required],
+      modelo: ['', Validators.required],
+      kilometraje: ['', Validators.required],
+      tipo_vehiculo: ['', Validators.required],
+      precio_dia: ['', Validators.required],
     });
   }
 

@@ -1,11 +1,13 @@
 <div class="car-results">
-  @if (car.model != undefined ){
+  @if (car.modelo != undefined ){
   <div class="car-card">
     <img src="assets/car.jpg" />
-    <h2>{{ car.model }}</h2>
-    <p>Price: {{ car.model }}</p>
-    <p>Year: {{ car.brand }}</p>
+    <h2>{{ car.modelo }}</h2>
+    <p>Price: {{ car.precio_dia }}</p>
+    <p>Year: {{ car.marca }}</p>
+    <p>Year: {{ car.kilometraje }}</p>
     <button mat-raised-button (click)="redirectToPayment(100)">Alquilar</button>
   </div>
   }
 </div>
+

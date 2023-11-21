@@ -1,9 +1,9 @@
 export interface CarDetails {
     id: number,
-    registrationNr: string,
-    brand: string,
-    model: string,
-    isAvailable: boolean,
-    type: string,
-    kmTraveled: string,
+    numero_placa: string,
+    marca: string,
+    modelo: string,
+    kilometraje: string,
+    tipo_vehiculo: string,
+    precio_dia: string,
 }

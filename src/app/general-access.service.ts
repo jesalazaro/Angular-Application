@@ -9,12 +9,14 @@ import { BehaviorSubject } from 'rxjs';
 export class GeneralAccessService {
 
 
-  private userIdSource = new BehaviorSubject<string>('') ;
+  private userIdSource = new BehaviorSubject<string>('');
   private moduleIdSource = new BehaviorSubject<string>('');
+  private carPaymentValue = new BehaviorSubject<string>('');
+
 
   currentUserId = this.userIdSource.asObservable();
-
   currentModule = this.moduleIdSource.asObservable();
+  currentCarPaymentValue = this.carPaymentValue.asObservable();
 
   constructor() { }
 
@@ -61,11 +63,22 @@ export class GeneralAccessService {
 
   changeUserId(userId: string) {
     this.userIdSource.next(userId);
+    sessionStorage.setItem("userId", userId);
   }
 
   changeModule(currentModule: string) {
     this.moduleIdSource.next(currentModule);
+    sessionStorage.setItem("currentModule", currentModule);
   }
 
+
+  
+  paymentCar(idCar: number, idUser: number, totalValue: number, paymentType: number) {
+    return axios.get(`${this.url}/api/vehiculos/execupago/${paymentType}/${totalValue}/${idUser}/${idCar}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
 
 }

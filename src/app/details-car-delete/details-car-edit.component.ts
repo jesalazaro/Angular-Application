@@ -39,11 +39,11 @@ export class DetailsCarEditComponent implements OnInit {
   }
 
   setFormValues() {
-    this.carForm.controls['registrationNr'].setValue(this.car.registrationNr);
-    this.carForm.controls['brand'].setValue(this.car.brand);
-    this.carForm.controls['model'].setValue(this.car.model);
-    this.carForm.controls['type'].setValue(this.car.type);
-    this.carForm.controls['kmTraveled'].setValue(this.car.kmTraveled);
+    this.carForm.controls['registrationNr'].setValue(this.car.numero_placa);
+    this.carForm.controls['brand'].setValue(this.car.marca);
+    this.carForm.controls['model'].setValue(this.car.modelo);
+    this.carForm.controls['type'].setValue(this.car.tipo_vehiculo);
+    this.carForm.controls['kmTraveled'].setValue(this.car.kilometraje);
   }
 
   initializeForm() {

@@ -12,31 +12,50 @@ export class NavbarComponent {
   userId = '';
   currentModule = '';
 
-  constructor(private generalAccess: GeneralAccessService, private router: Router) { }
+  constructor(private generalAccessService: GeneralAccessService, private router: Router) { }
 
 
   ngOnInit() {
-    this.generalAccess.currentUserId.subscribe((userId) => {
+
+    const userId = sessionStorage.getItem("userId");
+    const currentModule = sessionStorage.getItem("currentModule");
+
+    //if vacio para no romper reglas de typescript
+    if (userId == null) {
+    } else {
+      this.generalAccessService.changeUserId(userId);
+    }
+
+    if(currentModule == null){
+    } else {
+      this.generalAccessService.changeModule(currentModule);
+    }
+
+    this.generalAccessService.currentUserId.subscribe((userId) => {
       this.userId = userId;
     });
-    this.generalAccess.currentModule.subscribe((currentModule) => {
+    this.generalAccessService.currentModule.subscribe((currentModule) => {
       this.currentModule = currentModule;
     });
+
   }
 
   closeSession() {
     this.userId = '';
     this.currentModule = '';
+    sessionStorage.clear();
     this.router.navigate(['/']);
   }
 
   redirectToGeneral() {
     this.currentModule = '';
     this.router.navigate(['/general']);
+    sessionStorage.setItem("currentModule", '');
   }
 
   moduleRedirection(currentModule: string) {
     this.currentModule = currentModule;
+    sessionStorage.setItem("currentModule", currentModule);
   }
 
 

@@ -10,15 +10,15 @@ import { Router } from '@angular/router';
 export class GeneralPageComponent implements OnInit {
 
   currentModule: string | undefined;
+  perfEntries = performance.getEntriesByType('navigation');
 
-  constructor(private generalAccess: GeneralAccessService, private router: Router) { }
+  constructor(private generalAccessService: GeneralAccessService, private router: Router) { }
 
   ngOnInit(): void {
-      
   }
 
   moduleRedirection(currentModule: string) {
-    this.generalAccess.changeModule(currentModule);
+    this.generalAccessService.changeModule(currentModule);
     if (currentModule == 'carModule') {
       this.router.navigate(['/search-car']);
     }
