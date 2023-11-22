@@ -1,0 +1,50 @@
+<div class="mat-app-background">
+    <div class="form-container">
+      <form [formGroup]="hotelForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <mat-label for="id">Id hotel</mat-label>
+          <input
+            matInput
+            type="text"
+            id="id"
+            formControlName="id"
+          />
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label for="direccion">Direccion</mat-label>
+          <input matInput type="text" id="direccion" formControlName="direccion" />
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label for="numero_habitaciones">Numero de habitaciones</mat-label>
+          <input matInput type="text" id="numero_habitaciones" formControlName="numero_habitaciones" />
+        </mat-form-field>
+  
+        <mat-checkbox formControlName="isAvailable">Available</mat-checkbox> 
+  
+         <mat-form-field>
+          <mat-label for="tipo_propiedad">Tipo:</mat-label>
+          <mat-select formControlName="tipo_propiedad" id="tipo_propiedad">
+            <mat-option value="Apartamento">Apartamento</mat-option>
+            <mat-option value="Casa">Casa</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label for="numero_banos">Numero de banos:</mat-label>
+          <input
+            matInput
+            type="number"
+            id="numero_banos"
+            formControlName="numero_banos"
+          />
+        </mat-form-field>
+  
+        <button mat-raised-button type="submit" [disabled]="!hotelForm.valid">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div> 
+  

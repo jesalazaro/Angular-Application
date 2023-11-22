@@ -12,20 +12,32 @@ import { RegisterComponent } from './register/register.component';
 import { PaymentComponent } from './payment/payment.component';
 import { GeneralPageComponent } from './general-page/general-page.component';
 import { StartPageComponent } from './start-page/start-page.component';
+import { PublishHotelComponent } from './publish-hotel/publish-hotel.component';
+import { DetailsHotelComponent } from './details-hotel/details-hotel.component';
+import { PublishedHotelsComponent } from './published-hotels/published-hotels.component';
+import { ReservatedHotelsComponent } from './reservated-hotels/reservated-hotels.component';
 
 const routes: Routes = [
   {path: 'search-car', component: SearchCarComponent },
   {path: 'publish-car', component: PublishCarComponent},
-  {path: 'details-car/:id', component: DetailsCarComponent},
+  {path: 'details-car/:id/:days', component: DetailsCarComponent},
   {path: 'published-cars', component: PublishedCarsComponent},
-  {path: 'search-hotel', component: SearchHotelComponent},
   {path: 'details-car-edit/:id', component: DetailsCarEditComponent},
   {path: 'reservated-cars', component: ReservatedCarsComponent},
+
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'payment/:userId/:carId', component: PaymentComponent},
   {path: 'general', component: GeneralPageComponent},
   {path: '', component: StartPageComponent},
+
+  {path: 'search-hotel', component: SearchHotelComponent},
+  {path: 'publish-hotel', component: PublishHotelComponent},
+  {path: 'published-hotel', component: PublishedHotelsComponent},
+  {path: 'details-hotel/:id', component: DetailsHotelComponent},
+  {path: 'reservated-hotels', component: ReservatedHotelsComponent},
+
+
 ];
 
 @NgModule({

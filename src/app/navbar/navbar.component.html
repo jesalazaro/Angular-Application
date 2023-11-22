@@ -17,6 +17,19 @@
     <span class="flexExpand"></span>
     <button mat-button (click)="redirectToGeneral()">Menu General</button>
     <button mat-button (click)="closeSession()">Cerrar sesión</button>
+    } @else if(userId != '' && currentModule == 'houseModule') {
+
+    <button mat-button routerLink="/search-hotel">Rentar hotel</button>
+    <button mat-button routerLink="/publish-hotel">Publicar hotel</button>
+    <button mat-button routerLink="/published-hotels">
+      Mis hoteles publicados
+    </button>
+    <button mat-button routerLink="/reservated-hotels">
+      Mis hoteles reservados
+    </button>
+    <span class="flexExpand"></span>
+    <button mat-button (click)="redirectToGeneral()">Menu General</button>
+    <button mat-button (click)="closeSession()">Cerrar sesión</button>
 
     } @else if(userId != '' && currentModule == ''){
 

@@ -32,6 +32,12 @@ import { PaymentComponent } from './payment/payment.component';
 import { GeneralPageComponent } from './general-page/general-page.component';
 import { StartPageComponent } from './start-page/start-page.component';
 import { DetailsHotelComponent } from './details-hotel/details-hotel.component';
+import { DetailsHotelDeleteComponent } from './details-hotel-delete/details-hotel-delete.component';
+import { PublishHotelComponent } from './publish-hotel/publish-hotel.component';
+import { PublishedHotelsComponent } from './published-hotels/published-hotels.component';
+import { ReservatedHotelsComponent } from './reservated-hotels/reservated-hotels.component';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -50,6 +56,10 @@ import { DetailsHotelComponent } from './details-hotel/details-hotel.component';
     GeneralPageComponent,
     StartPageComponent,
     DetailsHotelComponent,
+    DetailsHotelDeleteComponent,
+    PublishHotelComponent,
+    PublishedHotelsComponent,
+    ReservatedHotelsComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +76,8 @@ import { DetailsHotelComponent } from './details-hotel/details-hotel.component';
     MatToolbarModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     FormsModule
   ],
   providers: [],

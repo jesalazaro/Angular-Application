@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CarDetails } from '../Interfaces/car-details';
 import { DriveEaseService } from '../drive-ease.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 
@@ -12,10 +13,17 @@ import { Router } from '@angular/router';
 })
 export class SearchCarComponent implements OnInit {
 
+  todayDate: Date = new Date();
+  appointment_date = '';
   cars: CarDetails[] = [];
   filteredCars: CarDetails[] = [];
   selectedOption = 'Todos';
 
+
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null, Validators.required),
+    end: new FormControl<Date | null>(null, Validators.required),
+  });
 
   constructor(private driveEaseService: DriveEaseService, private router: Router) {
 
@@ -25,6 +33,8 @@ export class SearchCarComponent implements OnInit {
     this.getCars();
 
   }
+
+
 
   getCars() {
     this.driveEaseService.getCars()
@@ -36,8 +46,30 @@ export class SearchCarComponent implements OnInit {
       });
   }
 
+  testResult(){
+    const start = this.range.get('start')!.value;
+    const end = this.range.get('end')!.value;
+
+    var Difference_In_Time = end!.getTime() - start!.getTime(); 
+    
+    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+    console.log(Difference_In_Days);
+
+  }
+
   redirectToDetails(productId: number) {
-    this.router.navigate(['/details-car', productId]);
+
+    const start = this.range.get('start')!.value;
+    const end = this.range.get('end')!.value;
+
+    var Difference_In_Time = end!.getTime() - start!.getTime(); 
+    
+    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+    console.log(Difference_In_Days);
+
+
+    this.router.navigate(['/details-car', productId, Difference_In_Days]);
+
   }
 
   filterResults(gamma: string, model: string) {

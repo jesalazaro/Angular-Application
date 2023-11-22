@@ -1,29 +1,44 @@
 <div class="result-container clickable-div">
-  <h2>Autos disponibles para rentar </h2>
-
+  <h2>Autos disponibles para rentar</h2>
 
   <mat-form-field>
-    <mat-label >Type:</mat-label>
-    <mat-select #model [value]="selectedOption" >
-      <mat-option value = "Todos">Todos</mat-option>
-      <mat-option value="370z">370z</mat-option>
-      <mat-option value="gamma media">Gamma media</mat-option>
-      <mat-option value="van">Van</mat-option>
+    <mat-label>Ingrese un rango de fechas</mat-label>
+    <mat-date-range-input
+      [rangePicker]="picker"
+      [min]="todayDate"
+      [formGroup]="range"
+    >
+      <input matStartDate placeholder="Start date" formControlName="start" />
+      <input matEndDate placeholder="End date" formControlName="end" />
+    </mat-date-range-input>
+    <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+  <!-- <button (click)="testResult()">pruebaPicker</button> -->
+  <mat-form-field>
+    <mat-label>Ciudad:</mat-label>
+    <mat-select #model [value]="selectedOption">
+      <mat-option value="Todos">Todos</mat-option>
+      <mat-option value="370z">Bogotá</mat-option>
+      <mat-option value="gamma media">Medellin</mat-option>
+      <mat-option value="van">Cali</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label >Type:</mat-label>
+    <mat-label>Tipo:</mat-label>
     <mat-select #gamma [value]="selectedOption">
-      <mat-option value = "Todos">Todos</mat-option>
+      <mat-option value="Todos">Todos</mat-option>
       <mat-option value="gamma baja">Gamma baja</mat-option>
       <mat-option value="gamma media">Gamma media</mat-option>
       <mat-option value="van">Van</mat-option>
     </mat-select>
   </mat-form-field>
 
-
-  <button mat-raised-button (click)="filterResults(gamma.value, model.value)" >Buscar </button>
+  <button mat-raised-button (click)="filterResults(gamma.value, model.value)" [disabled]="!range.valid">
+    Buscar
+  </button>
 
   <div class="result-grid">
     @for (item of filteredCars; track $index) {

@@ -1,1 +1,12 @@
-<p>details-hotel works!</p>
+<div class="hotel-results">
+    @if (hotel.direccion != undefined ){
+    <div class="hotel-card">
+      <img src="assets/car.jpg" />
+      <h2>{{ hotel.direccion }}</h2>
+      <p>Price: {{ hotel.direccion }}</p>
+      <p>Year: {{ hotel.tipo_propiedad }}</p>
+      <button mat-raised-button (click)="redirectToPayment(100)">Alquilar</button>
+    </div>
+    }
+  </div>
+  

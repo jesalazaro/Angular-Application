@@ -17,6 +17,9 @@ export class DetailsCarComponent implements OnInit {
 
   carId!: number;
   car!: CarDetails;
+  days = 0;
+  total_value = 0;
+  price = 100000;
 
   ngOnInit(): void {
     this.getCar();
@@ -24,9 +27,13 @@ export class DetailsCarComponent implements OnInit {
 
   getCar() {
     this.carId = this.route.snapshot.params['id'];
+    this.days = this.route.snapshot.params['days'];
+    this.total_value = this.price*this.days;
+    console.log(this.total_value);
     this.driveEaseService.getCar(this.carId)
       .then(response => {
         this.car = response.data;
+  
       }).catch(error => {
         console.log(error);
       });

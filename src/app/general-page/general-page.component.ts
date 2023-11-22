@@ -22,6 +22,9 @@ export class GeneralPageComponent implements OnInit {
     if (currentModule == 'carModule') {
       this.router.navigate(['/search-car']);
     }
+    else if (currentModule == 'houseModule') {
+      this.router.navigate(['/search-hotel']);
+    }
 
   }
 
