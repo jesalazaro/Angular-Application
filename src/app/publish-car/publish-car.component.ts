@@ -60,6 +60,7 @@ export class PublishCarComponent implements OnInit {
       .then(response => {
         // Handle the response here
         alert("Auto Publicado")
+        this.carForm.reset();
       })
       .catch(error => {
         // Handle errors here

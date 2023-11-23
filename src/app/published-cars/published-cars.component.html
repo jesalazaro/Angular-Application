@@ -5,6 +5,7 @@
     <div class="result-item" (click)="redirectToDetails(item.id_vehiculo)">
       <img src="assets/car.jpg" alt="Result Image" />
       <div class="result-content">
+        {{item.numero_placa}}
         {{ item.marca }}
         <p>{{ item.precio_dia }}</p>
         {{ $index }}

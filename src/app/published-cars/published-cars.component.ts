@@ -13,7 +13,7 @@ export class PublishedCarsComponent implements OnInit {
   cars: CarDetails[] = [];
   filteredCars: CarDetails[] = [];
   selectedOption = 'Todos';
-
+  userId = sessionStorage.getItem("userId");
 
   constructor(private driveEaseService: DriveEaseService, private router: Router) {
 
@@ -28,7 +28,9 @@ export class PublishedCarsComponent implements OnInit {
     this.driveEaseService.getCars()
       .then(response => {
         this.filteredCars = response.data;
-        this.cars = response.data
+        const filterUserId = Number(this.userId);
+        this.filteredCars = this.filteredCars.filter(item => item.id_usuario == filterUserId);
+        this.cars = this.filteredCars;
       }).catch(error => {
         console.log(error);
       });
