@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Form, FormGroup } from '@angular/forms';
 import axios, { AxiosError, AxiosResponse } from 'axios';
@@ -10,12 +9,12 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 export class DriveEaseService {
 
 
-  url = 'http://localhost:8080'
-  
+  url = 'http://localhost:8080/api/vehiculos'
+
   constructor() { }
 
   getCars() {
-    return axios.get(`${this.url}/module/cars`, {
+    return axios.get(`${this.url}/vehiculosdispo`, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -24,7 +23,23 @@ export class DriveEaseService {
 
 
   getCar(id: number) {
-    return axios.get(`${this.url}/module/cars/${id}`, {
+    return axios.get(`${this.url}/vehiculosxid/${id}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+
+  getCarsByCity(idCity: string) {
+    return axios.get(`${this.url}/buscarxciudad/${idCity}`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+
+  getReservatedCars(userId: string) {
+    return axios.get(`http://localhost:8080/api/alquilar/alquilarxid/${userId}`, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -32,10 +47,22 @@ export class DriveEaseService {
   }
 
 
+  async postCarRented(data: object) {
+    const apiUrl = `${this.url}/module/cars`;
+    try {
+      const response = await axios.post(`${this.url}/alquilar/alquilarsave`, data);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+
+
 
 
   async postCar(data: FormGroup) {
-    const apiUrl = `${this.url}/module/cars`;
+    const apiUrl = `${this.url}/createCar`;
     try {
       const response = await axios.post(apiUrl, data);
       return response.data;

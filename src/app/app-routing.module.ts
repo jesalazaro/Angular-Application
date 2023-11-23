@@ -27,7 +27,7 @@ const routes: Routes = [
 
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'payment/:userId/:carId', component: PaymentComponent},
+  {path: 'payment/:carId/:total', component: PaymentComponent},
   {path: 'general', component: GeneralPageComponent},
   {path: '', component: StartPageComponent},
 

@@ -64,7 +64,17 @@ export class GeneralAccessService {
   changeUserId(userId: string) {
     this.userIdSource.next(userId);
     sessionStorage.setItem("userId", userId);
+
   }
+
+  getCitys() {
+    return axios.get(`${this.url}/api/ciudad/todasciudades`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+
 
   changeModule(currentModule: string) {
     this.moduleIdSource.next(currentModule);
@@ -72,8 +82,9 @@ export class GeneralAccessService {
   }
 
 
-  
-  paymentCar(idCar: number, idUser: number, totalValue: number, paymentType: number) {
+
+  paymentCar(idCar: number, idUser: string | null | undefined, totalValue: number, paymentType: number) {
+    console.log(paymentType, totalValue, idUser, idCar)
     return axios.get(`${this.url}/api/vehiculos/execupago/${paymentType}/${totalValue}/${idUser}/${idCar}`, {
       headers: {
         'Content-Type': 'application/json'

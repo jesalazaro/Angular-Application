@@ -26,8 +26,8 @@
       <mat-form-field>
         <mat-label for="tipo_vehiculo">Tipo:</mat-label>
         <mat-select formControlName="tipo_vehiculo" id="tipo_vehiculo">
-          <mat-option value="gamma baja">Gamma baja</mat-option>
-          <mat-option value="gamma media">Gamma media</mat-option>
+          <mat-option value="baja">Gamma baja</mat-option>
+          <mat-option value="media">Gamma media</mat-option>
           <mat-option value="van">Van</mat-option>
         </mat-select>
       </mat-form-field>
@@ -52,10 +52,19 @@
         />
       </mat-form-field>
 
+      <mat-form-field formGroupName="ciudad">
+        <mat-label for="tipo_vehiculo">Ciudad</mat-label>
+        <mat-select formControlName="nombre_ciudad" id="tipo_vehiculo">
+          @for (item of cities; track $index) {
+            <mat-option value={{item.nombre_ciudad}}>{{item.nombre_ciudad}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
 
+      {{ carForm.value | json }}
 
       <button mat-raised-button type="submit" [disabled]="!carForm.valid">
-        Submit
+        Publicar
       </button>
     </form>
   </div>

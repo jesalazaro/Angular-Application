@@ -33,14 +33,19 @@ export class LoginComponent {
   getUser() {
     this.generalAccessService.getUser(this.email, this.password).then(response => {
       this.userData = response.data;
-      this.sendUserId(response.data.id_usuario);
+      this.sendUserId(response.data.id_usuario, response.data.numero_tarjeta, response.data.numero_cuenta);
     }).catch(error => {
       console.log(error);
     });
   }
 
-  sendUserId(idUsuario: string) {
+  sendUserId(idUsuario: string, creditCard: string, account: string) {
+    console.log(idUsuario, creditCard)
     this.generalAccessService.changeUserId(idUsuario);
+    sessionStorage.setItem("creditCard", creditCard);
+    sessionStorage.setItem("account", account);
+    console.log(account)
+    sessionStorage.getItem("creditCard");
     this.router.navigate(['/general']);
   }
 

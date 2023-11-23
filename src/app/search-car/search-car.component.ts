@@ -17,8 +17,9 @@ export class SearchCarComponent implements OnInit {
   appointment_date = '';
   cars: CarDetails[] = [];
   filteredCars: CarDetails[] = [];
+  total_cars: CarDetails[] = [];
   selectedOption = 'Todos';
-
+  userId = sessionStorage.getItem("userId");
 
   range = new FormGroup({
     start: new FormControl<Date | null>(null, Validators.required),
@@ -40,54 +41,83 @@ export class SearchCarComponent implements OnInit {
     this.driveEaseService.getCars()
       .then(response => {
         this.filteredCars = response.data;
-        this.cars = response.data
+        const filterUserId = Number(this.userId);
+        this.filteredCars = this.filteredCars.filter(item => item.id_usuario !== filterUserId);
+        this.cars = this.filteredCars;
+        this.total_cars = this.filteredCars;
       }).catch(error => {
         console.log(error);
       });
   }
 
-  testResult(){
-    const start = this.range.get('start')!.value;
-    const end = this.range.get('end')!.value;
 
-    var Difference_In_Time = end!.getTime() - start!.getTime(); 
-    
-    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
-    console.log(Difference_In_Days);
-
+  getCarsByCity(city: string) {
+    this.driveEaseService.getCarsByCity(city)
+      .then(response => {
+        this.filteredCars = response.data;
+        const filterUserId = Number(this.userId)
+        this.filteredCars = this.filteredCars.filter(item => item.id_usuario !== filterUserId);
+        this.filteredCars = this.filteredCars.filter(item => item.disponible !== 0);
+      }).catch(error => {
+        console.log(error);
+      });
   }
+
+
 
   redirectToDetails(productId: number) {
 
     const start = this.range.get('start')!.value;
+
     const end = this.range.get('end')!.value;
 
-    var Difference_In_Time = end!.getTime() - start!.getTime(); 
-    
-    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
-    console.log(Difference_In_Days);
+    if (start !== null && end !== null) {
+
+      const startString = start.toString();
+      const endString = end.toString();
+
+      sessionStorage.setItem("startDate", startString);
+      sessionStorage.setItem("endDate", endString);
 
 
-    this.router.navigate(['/details-car', productId, Difference_In_Days]);
+      var Difference_In_Time = end!.getTime() - start!.getTime();
+      var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+      this.router.navigate(['/details-car', productId, Difference_In_Days]);
+
+    } else {
+      this.router.navigate(['/details-car', productId, 1]);
+    }
+
+
+
+
 
   }
 
-  filterResults(gamma: string, model: string) {
+  filterResults(gamma: string, city: string) {
 
+    // this.getCars();
 
-    if (gamma != 'Todos' && model == 'Todos') {
+    if (gamma != 'Todos' && city == 'Todos') {
+      this.filteredCars = this.total_cars;
+      this.cars = this.total_cars;
+
       this.filteredCars = this.cars.filter(
         car => car?.tipo_vehiculo.toLowerCase().includes(gamma.toLowerCase())
       );
     }
-    else if (gamma == 'Todos' && model != 'Todos') {
-      this.filteredCars = this.cars.filter(
-        car => car?.modelo.toLowerCase().includes(model.toLowerCase())
-      );
+
+    else if (gamma == 'Todos' && city != 'Todos') {
+      this.getCarsByCity(city);
+
+      console.log(this.filteredCars)
     }
-    else if (gamma != 'Todos' && model != 'Todos') {
+
+    else if (gamma != 'Todos' && city != 'Todos') {
+      this.getCarsByCity(city);
+
       this.filteredCars = this.cars.filter(
-        car => car?.tipo_vehiculo.toLowerCase().includes(gamma.toLowerCase()) && car?.modelo.toLowerCase().includes(model.toLowerCase())
+        car => car?.tipo_vehiculo.toLowerCase().includes(gamma.toLowerCase())
       );
     }
     else {

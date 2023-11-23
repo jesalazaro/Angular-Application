@@ -1,14 +1,13 @@
 <div class="result-container clickable-div">
     <h2> Mis autos reservados</h2>
     <div class="result-grid">
-      @for (item of filteredCars; track $index) {
+      @for (item of filteredHotels; track $index) {
       <div class="result-item">
         <img src="assets/car.jpg" alt="Result Image" />
         <div class="result-content">
-          <p>marca: {{ item.marca }}</p>
-          <p>modelo: {{ item.modelo }}</p>
-          <p>fecha de inicio: {{ item.fecha_inicio | date }}</p>
-          <p>fecha de entrega: {{ item.fecha_fin | date }}</p>
+          {{ item.direccion }}
+          <p>{{ item.tipo_propiedad }}</p>
+          {{ $index }}
         </div>
       </div>
       } @empty { There were no items in the list. }

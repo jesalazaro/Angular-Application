@@ -1,0 +1,36 @@
+/* result.component.css */
+
+.result-container {
+  max-width: 800px;
+  margin: 20px auto;
+}
+[ng-click],
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns with equal width */
+  gap: 20px; /* Gap between grid items */
+}
+
+.result-item {
+  border: 1px solid #ddd;
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* Stack image and content vertically */
+}
+
+.result-item img {
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+.result-content {
+  flex-grow: 1;
+}
+
+.result-content h3 {
+  margin: 0;
+}
+
+.result-content p {
+  margin: 10px 0;
+}

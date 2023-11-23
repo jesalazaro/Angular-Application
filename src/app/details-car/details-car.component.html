@@ -1,17 +1,33 @@
-
-
-{{total_value}} por {{days}} días
 <div class="car-results">
   @if (car.modelo != undefined ){
   <div class="car-card">
     <img src="assets/car.jpg" />
-    <h2>{{ car.modelo }}</h2>
-    <p>Price: {{ car.precio_dia }}</p>
-    <p>Year: {{ car.marca }}</p>
-    <p>Year: {{ car.kilometraje }}</p>
-    <button mat-raised-button (click)="redirectToPayment(100)">Alquilar</button>
+    <h2>{{ car.marca }} {{ car.modelo }}</h2>
+    <p>Precio por día: {{ car.precio_dia }}</p>
+    <p>Kilometraje:{{ car.kilometraje }}</p>
+
+    <mat-form-field>
+      <mat-label>Ingrese un rango de fechas</mat-label>
+      <mat-date-range-input
+        [rangePicker]="picker"
+        [min]="todayDate"
+        [formGroup]="range"
+      >
+        <input matStartDate placeholder="Start date" formControlName="start" />
+        <input matEndDate placeholder="End date" formControlName="end" />
+      </mat-date-range-input>
+      <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+
+    <p>Valor total: ${{ total_value }} COP por {{ days }} días</p>
+    <button mat-raised-button (click)="redirectToPayment()">Alquilar</button>
   </div>
   }
 </div>
 
-
+<!-- <button mat-raised-button (click)="redirectToPayment()">Alquilar</button> -->

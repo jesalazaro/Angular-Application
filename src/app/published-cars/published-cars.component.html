@@ -2,7 +2,7 @@
   <h2>Mis autos publicados</h2>
   <div class="result-grid">
     @for (item of filteredCars; track $index) {
-    <div class="result-item" (click)="redirectToDetails(item.id)">
+    <div class="result-item" (click)="redirectToDetails(item.id_vehiculo)">
       <img src="assets/car.jpg" alt="Result Image" />
       <div class="result-content">
         {{ item.marca }}
