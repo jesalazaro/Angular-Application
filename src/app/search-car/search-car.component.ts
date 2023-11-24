@@ -3,6 +3,8 @@ import { CarDetails } from '../Interfaces/car-details';
 import { DriveEaseService } from '../drive-ease.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { GeneralAccessService } from '../general-access.service';
+import { cityDetails } from '../Interfaces/city-details';
 
 
 
@@ -12,7 +14,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './search-car.component.css'
 })
 export class SearchCarComponent implements OnInit {
-
+  cities: cityDetails[] = [];
   todayDate: Date = new Date();
   appointment_date = '';
   cars: CarDetails[] = [];
@@ -26,13 +28,13 @@ export class SearchCarComponent implements OnInit {
     end: new FormControl<Date | null>(null, Validators.required),
   });
 
-  constructor(private driveEaseService: DriveEaseService, private router: Router) {
+  constructor(private driveEaseService: DriveEaseService, private router: Router, private generalAccessService: GeneralAccessService) {
 
   }
 
   ngOnInit(): void {
     this.getCars();
-
+    this.getCitys();
   }
 
 
@@ -50,6 +52,17 @@ export class SearchCarComponent implements OnInit {
       });
   }
 
+  
+  getCitys() {
+    this.generalAccessService.getCitys()
+      .then(response => {
+        this.cities = response.data;
+        this.cities = this.cities.filter(item => item.pais == 'colombia');
+
+      }).catch(error => {
+        console.log(error);
+      });
+  }
 
   getCarsByCity(city: string) {
     this.driveEaseService.getCarsByCity(city)

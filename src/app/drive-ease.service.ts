@@ -47,15 +47,7 @@ export class DriveEaseService {
   }
 
 
-  async postCarRented(data: object) {
-    const apiUrl = `${this.url}/module/cars`;
-    try {
-      const response = await axios.post(`${this.url}/alquilar/alquilarsave`, data);
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  }
+
 
 
 

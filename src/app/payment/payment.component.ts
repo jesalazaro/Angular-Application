@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GeneralAccessService } from '../general-access.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DriveEaseService } from '../drive-ease.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class PaymentComponent implements OnInit {
   id_car = 0;
   dias = 0;
 
-  constructor(private driveEaseService: DriveEaseService, private formBuilder: FormBuilder, private generalAccessService: GeneralAccessService, private route: ActivatedRoute) { }
+  constructor(private router: Router, private driveEaseService: DriveEaseService, private formBuilder: FormBuilder, private generalAccessService: GeneralAccessService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.id_car = this.route.snapshot.params['carId'];
@@ -65,10 +65,11 @@ export class PaymentComponent implements OnInit {
         fecha_inicio: startDate,
         fecha_fin: endDate
       }
-      
-      this.driveEaseService.postCarRented(dataReservation)
+
+      this.generalAccessService.postCarRented(dataReservation)
         .then(response => {
-          alert("Auto Publicado")
+          alert("Auto Adquirido")
+          this.router.navigate(['/search-car']);
         })
         .catch(error => {
           // Handle errors here

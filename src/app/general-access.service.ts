@@ -92,4 +92,14 @@ export class GeneralAccessService {
     });
   }
 
+  async postCarRented(data: object) {
+
+    try {
+      const response = await axios.post(`${this.url}/api/alquilar/alquilarsave`, data);
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
 }

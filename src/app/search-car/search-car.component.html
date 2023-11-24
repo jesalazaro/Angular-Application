@@ -16,13 +16,25 @@
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
   <!-- <button (click)="testResult()">pruebaPicker</button> -->
-  <mat-form-field>
+  <!-- <mat-form-field>
     <mat-label>Ciudad:</mat-label>
     <mat-select #model [value]="selectedOption">
       <mat-option value="Todos">Todos</mat-option>
       <mat-option value="1">San Andres</mat-option>
       <mat-option value="2">Cartagena</mat-option>
       <mat-option value="3">Cali</mat-option>
+    </mat-select>
+  </mat-form-field> -->
+
+  <mat-form-field>
+    <mat-label>Ciudad</mat-label>
+    <mat-select  #model [value]="selectedOption">
+      <mat-option value="Todos">Todos</mat-option>
+      @for (item of cities; track $index) {
+      <mat-option value="{{ $index }}">{{
+        item.nombre_ciudad
+      }}</mat-option>
+      }
     </mat-select>
   </mat-form-field>
 

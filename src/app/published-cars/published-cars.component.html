@@ -5,10 +5,9 @@
     <div class="result-item" (click)="redirectToDetails(item.id_vehiculo)">
       <img src="assets/car.jpg" alt="Result Image" />
       <div class="result-content">
+        {{ item.marca }} , {{item.modelo}}
         {{item.numero_placa}}
-        {{ item.marca }}
         <p>{{ item.precio_dia }}</p>
-        {{ $index }}
       </div>
     </div>
     } @empty { There were no items in the list. }
