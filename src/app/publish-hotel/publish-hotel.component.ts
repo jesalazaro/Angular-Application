@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StayHubService } from '../stay-hub.service';
+import { cityDetails } from '../Interfaces/city-details';
+import { GeneralAccessService } from '../general-access.service';
 
 @Component({
   selector: 'app-publish-hotel',
@@ -10,11 +12,14 @@ import { StayHubService } from '../stay-hub.service';
 export class PublishHotelComponent implements OnInit {
 
   hotelForm!: FormGroup;
+  cities: cityDetails[] = [];
 
-  constructor(private formBuilder: FormBuilder, private stayHubService: StayHubService) { }
+
+  constructor(private formBuilder: FormBuilder, private stayHubService: StayHubService, private generalAccessService: GeneralAccessService) { }
 
   ngOnInit(): void {
     this.initializeForm();
+    this.getCitys();
   }
 
   initializeForm() {
@@ -22,29 +27,57 @@ export class PublishHotelComponent implements OnInit {
       direccion: ['', Validators.required],
       tipo_propiedad: ['', Validators.required],
       numero_habitaciones: ['', Validators.required],
-      isAvailable: true,
       numero_banos: ['', Validators.required],
+      numero_cuenta: [sessionStorage.getItem("account")],
+      id_usuario: [sessionStorage.getItem("userId")],
+      valor_noche: ['', Validators.required],
+      disponible: [1],
+      ciudad: this.formBuilder.group({
+        id_ciudad: [],
+        nombre_ciudad: ['', Validators.required],
+        pais: ['colombia']
+      })
     });
   }
 
   onSubmit() {
+
     if (this.hotelForm.valid) {
-      // Log or send the form data to a service
-      this.createHotel();
+      const selectedCity = this.hotelForm.get(['ciudad', 'nombre_ciudad'])!.value
+      const city = this.cities.find(obj => obj.nombre_ciudad === selectedCity);
+      (<FormGroup>this.hotelForm.controls['ciudad']).controls['id_ciudad'].patchValue(city?.id_ciudad);
+      console.log(city?.id_ciudad)
+      this.createCar()
     } else {
       // Handle invalid form
       alert('Please fill in all required fields.');
     }
   }
 
-  createHotel() {
+
+  createCar() {
+
     this.stayHubService.postHotel(this.hotelForm.getRawValue())
       .then(response => {
         // Handle the response here
-        alert("Hotel Publicado");
+        alert("Auto Publicado")
+        this.hotelForm.reset();
       })
       .catch(error => {
         // Handle errors here
+      });
+  }
+
+
+
+  getCitys() {
+    this.generalAccessService.getCitys()
+      .then(response => {
+        this.cities = response.data;
+        this.cities = this.cities.filter(item => item.pais == 'colombia');
+
+      }).catch(error => {
+        console.log(error);
       });
   }
 }

@@ -15,7 +15,7 @@ export class StayHubService {
   constructor() { }
 
   getHotels() {
-    return axios.get(`${this.url}/module/hotels`, {
+    return axios.get(`${this.url}/api/hospedaje/todoinmu`, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -34,7 +34,7 @@ export class StayHubService {
 
 
   async postHotel(data: FormGroup) {
-    const apiUrl = `${this.url}/module/hotels`;
+    const apiUrl = `${this.url}/api/hospedaje/createinmu`;
     try {
       const response = await axios.post(apiUrl, data);
       return response.data;

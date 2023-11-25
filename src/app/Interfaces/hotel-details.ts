@@ -6,4 +6,8 @@ export interface HotelDetails {
     numero_banos: number; // Nueva propiedad para número de baños
     numero_cuenta: string; // Nueva propiedad para número de cuenta
     id_usuario: number; // Nueva propiedad para ID de usuario
+    tipo_hotel: string;
+    city: string;
+    disponible: number;
+    valor_noche: string;
 }

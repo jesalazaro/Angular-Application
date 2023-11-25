@@ -1,2 +1,73 @@
-<p>search-hotel works!</p>
-este es un texto de prueba para html
+<div class="result-container clickable-div">
+    <h2>Autos disponibles para rentar</h2>
+  
+    <mat-form-field>
+      <mat-label>Ingrese un rango de fechas</mat-label>
+      <mat-date-range-input
+        [rangePicker]="picker"
+        [min]="todayDate"
+        [formGroup]="range"
+      >
+        <input matStartDate placeholder="Start date" formControlName="start" />
+        <input matEndDate placeholder="End date" formControlName="end" />
+      </mat-date-range-input>
+      <!-- <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint> -->
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+    <!-- <button (click)="testResult()">pruebaPicker</button> -->
+    <!-- <mat-form-field>
+      <mat-label>Ciudad:</mat-label>
+      <mat-select #model [value]="selectedOption">
+        <mat-option value="Todos">Todos</mat-option>
+        <mat-option value="1">San Andres</mat-option>
+        <mat-option value="2">Cartagena</mat-option>
+        <mat-option value="3">Cali</mat-option>
+      </mat-select>
+    </mat-form-field> -->
+  
+    <mat-form-field>
+      <mat-label>Ciudad</mat-label>
+      <mat-select  #model [value]="selectedOption">
+        <mat-option value="Todos">Todos</mat-option>
+        @for (item of cities; track $index) {
+        <mat-option value="{{ $index }}">{{
+          item.nombre_ciudad
+        }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Gamma:</mat-label>
+      <mat-select #gamma [value]="selectedOption">
+        <mat-option value="Todos">Todos</mat-option>
+        <mat-option value="apartamento">Apartamento</mat-option>
+        <mat-option value="casa">Casa</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <button
+      mat-raised-button
+      (click)="filterResults(gamma.value, model.value)"
+      [disabled]="!range.valid"
+    >
+      Buscar
+    </button>
+  
+    <div class="result-grid">
+      @for (item of filteredHotels; track $index) {
+      <div class="result-item" >
+        <img src="assets/hotel-general.jpg" alt="Result Image" />
+        <div class="result-content">
+          <p>Marca: {{ item.tipo_hotel }}</p>
+          <p>Número de habitaciones: {{ item.numero_habitaciones }}</p>
+          <p>Número de baños: {{ item.numero_banos }}</p>
+          <p>Dirección: $ {{ item.direccion}} COP</p>
+          <p>Precio por noche: $ {{ item.valor_noche}} COP</p>
+        </div>
+      </div>
+      } @empty { No se encontraron hoteles}
+    </div>
+  </div>
+  
